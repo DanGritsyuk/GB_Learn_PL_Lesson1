@@ -24,13 +24,8 @@ namespace Lesson1
         {
             Console.Write("Выйти в главное меню? (Y/N): ");
             char answer;
-            bool correct = char.TryParse(Console.ReadLine(), out answer);
-            while (!correct || !(answer == 'Y' || answer == 'y' || answer == 'N' || answer == 'n')) // Если в консоль ввели не символ, либо символ не равный Y\y и N/n то повторить ввод.
-            {
+            while (!char.TryParse(Console.ReadLine(), out answer) || !(answer == 'Y' || answer == 'y' || answer == 'N' || answer == 'n')) // Если в консоль ввели не символ, либо символ не равный Y\y и N/n то повторить ввод.
                 Console.Write("Ответ некоректен. Введите (Y/N): ");
-                correct = char.TryParse(Console.ReadLine(), out answer);
-            }
-;
 
             return answer == 'Y' || answer == 'y';
         }
