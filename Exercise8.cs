@@ -7,7 +7,7 @@ namespace Lesson1
 
         public override void Body()
         {
-            Console.Write("Введите первое число (n): ");
+            Console.Write("Введите число (n): ");
             int n = Lesson1.InputNumbers.GetNumberFromConsole();
             if (n < 0) n = n * -1;
 

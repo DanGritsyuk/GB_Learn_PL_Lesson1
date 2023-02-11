@@ -7,7 +7,7 @@ namespace Lesson1
 
         public override void Body()
         {
-            Console.Write("Введите первое число (a): ");
+            Console.Write("Введите число (a): ");
             int a = Lesson1.InputNumbers.GetNumberFromConsole();
 
             Console.WriteLine($"{a} - {(a % 2 == 0 ? "четное" : "нечетное")}");
