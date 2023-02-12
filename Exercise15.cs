@@ -9,7 +9,7 @@ namespace Lesson1
         public override void Body()
         {
             Console.Write("Введите число дня недели: ");
-            int weekDay = InputNumbers.GetNumberInRangeFromConsole(1, 7, "Такого дня недели нет. Введите число от 1 до 7: ");
+            int weekDay = InputNumbers.GetNumberFromConsole(1, 7, "Такого дня недели нет. Введите число от 1 до 7: ");
 
             Console.Write($"День {weekDay} - это {NameOfDayWeek(weekDay)}, потому ");
             if (weekDay > 5) Console.WriteLine("выходной");

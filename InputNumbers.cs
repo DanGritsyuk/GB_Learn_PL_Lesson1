@@ -10,7 +10,7 @@ namespace Lesson1
             return number;
         }
 
-        public static int GetNumberInRangeFromConsole(int first, int last, string errorMessage)
+        public static int GetNumberFromConsole(int first, int last, string errorMessage)
         {
             int n = 0;
             Func<bool> tryGetThreedigitFromConsole = () => // Функция для вызова одного и того же кода в нескольких местах в этом методе 
