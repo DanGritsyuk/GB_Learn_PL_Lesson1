@@ -25,7 +25,7 @@ namespace Lesson1
             Console.Write("Выйти в главное меню? (Y/N): ");
             char answer;
             while (!char.TryParse(Console.ReadLine(), out answer) || !(answer == 'Y' || answer == 'y' || answer == 'N' || answer == 'n')) // Если в консоль ввели не символ, либо символ не равный Y\y и N/n то повторить ввод.
-                Console.Write("Ответ некоректен. Введите (Y/N): ");
+                Console.Write("Ответ некорректен. Введите (Y/N): ");
 
             return answer == 'Y' || answer == 'y';
         }

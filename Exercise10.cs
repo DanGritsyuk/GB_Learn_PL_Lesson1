@@ -9,7 +9,7 @@ namespace Lesson1
         public override void Body()
         {
             Console.Write("Введите число (n): ");
-            int n = InputNumbers.GetNumberInRangeFromConsole(100, 999, "Веедено не трехзначное число. Введите корректное: ");
+            int n = InputNumbers.GetNumberInRangeFromConsole(100, 999, "Введено не трехзначное число. Введите корректное: ");
 
             Console.WriteLine($"Вторая цифра числа {n} это {n / 10 % 10}");
         }
