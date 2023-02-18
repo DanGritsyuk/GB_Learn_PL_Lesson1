@@ -31,6 +31,7 @@ while (!done)
         case 6: exercise = new Lessons.Exercise13(13); break;
         case 7: exercise = new Lessons.Exercise15(15); break;
         case 8: exercise = new Lessons.Exercise19(19); break;
+        case 9: exercise = new Lessons.Exercise21(21); break;
         default:
             Console.WriteLine("ЗАДАЧА ЕЩЕ НЕ РЕАЛИЗОВАНА");
             Console.ReadKey();
