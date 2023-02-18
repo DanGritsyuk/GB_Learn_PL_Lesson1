@@ -31,12 +31,10 @@ namespace Lessons
             public double y;
             public double z;
 
-            public static double GetDistance(Point3D point1, Point3D point2) => Math.Sqrt((point2.x - point1.x) * (point2.x - point1.x) + (point2.y - point1.y) * (point2.y - point1.y) + (point2.z - point1.z) * (point2.z - point1.z));
+            public static double GetDistance(Point3D point1, Point3D point2) =>
+                Math.Sqrt(Math.Pow(point2.x - point1.x, 2) + Math.Pow(point2.y - point1.y, 2) + Math.Pow(point2.z - point1.z, 2));
 
-            public override string ToString()
-            {
-                return $"({x}; {y}; {z})";
-            }
+            public override string ToString() => $"({x}; {y}; {z})";
         }
     }
 }
