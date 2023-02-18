@@ -10,8 +10,10 @@ namespace Lessons
             return number;
         }
 
+
         public static int GetNumberFromConsole(int first, int last, string errorMessage)
         {
+            if (first > last) throw new ArgumentException();
             int n = 0;
             Func<bool> tryGetThreedigitFromConsole = () => // Функция для вызова одного и того же кода в нескольких местах в этом методе 
             {

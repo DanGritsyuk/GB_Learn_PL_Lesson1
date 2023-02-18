@@ -4,7 +4,7 @@ namespace Lessons
 {
     public static class StartMenu
     {
-        public static int GetMenu(string[] menuLines)
+        public static int GetMenu(string[] menuLines, bool showHelpControl = false)
         {
 
             int row = Console.CursorTop;
@@ -12,7 +12,8 @@ namespace Lessons
             int index = 0;
             while (true)
             {
-                DrawMenu(menuLines, row, col, index);
+                DrawMenu(menuLines, row, col, index, showHelpControl);
+
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.DownArrow:
@@ -30,7 +31,7 @@ namespace Lessons
                 }
             }
         }
-        private static void DrawMenu(string[] menuLines, int row, int col, int index)
+        private static void DrawMenu(string[] menuLines, int row, int col, int index, bool showHelpControl)
         {
             var largerLine = menuLines[0].Length;
             Console.SetCursorPosition(col, row);
@@ -44,8 +45,13 @@ namespace Lessons
 
                 if (i == menuLines.Length)
                 {
-                    WriteEndLine(largerLine);
-                    Console.WriteLine("Для выхода нажмите Esc");
+                    if (showHelpControl)
+                    {
+                        WriteEndLine(largerLine);
+                        Console.Write("↑ ↓ - перемещаться между строками. ");
+                        Console.Write("Enter - выбрать задачу. ");
+                        Console.WriteLine("Для выхода нажмите Esc.");
+                    }
                 }
                 else
                 {
