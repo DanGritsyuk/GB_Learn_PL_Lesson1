@@ -4,7 +4,8 @@ namespace Lessons
 {
     public class Exercise4 : Exercise
     {
-        public Exercise4(int taskNum) : base(taskNum) { }
+        public Exercise4(int taskNum, string description) : base(taskNum, description) { }
+        public Exercise4(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
         public override void Body()
         {
             Console.Write("Введите первое число (a): ");

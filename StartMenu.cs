@@ -4,6 +4,31 @@ namespace Lessons
 {
     public static class StartMenu
     {
+        public static KeyValuePair<int, string> GetMenu(Dictionary<int, string> menuItems, bool showHelpControl = false)
+        {
+            int taskIndex = 0, taskKey = 0;
+            string taskText = "";
+
+            var tasksArrayKeys = new int[menuItems.Count];
+            var tasksArrayValues = new string[tasksArrayKeys.Length];
+            foreach (var taskData in menuItems)
+            {
+                tasksArrayKeys[taskIndex] = taskData.Key;
+                tasksArrayValues[taskIndex] = $"Задача{(taskData.Key < 10 ? "  " : " ")}{taskData.Key}: {taskData.Value}";
+
+                taskIndex++;
+            }
+            taskIndex = Lessons.StartMenu.GetMenu(tasksArrayValues, showHelpControl);
+            if (taskIndex > 0)
+            {
+                taskIndex--;
+                taskKey = tasksArrayKeys[taskIndex];
+                taskText = menuItems[taskKey];
+            }
+
+            return new KeyValuePair<int, string>(taskKey, taskText);
+        }
+
         public static int GetMenu(string[] menuLines, bool showHelpControl = false)
         {
 

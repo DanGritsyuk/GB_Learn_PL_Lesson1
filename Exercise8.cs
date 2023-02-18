@@ -4,7 +4,8 @@ namespace Lessons
 {
     public class Exercise8 : Exercise
     {
-        public Exercise8(int taskNum) : base(taskNum) { }
+        public Exercise8(int taskNum, string description) : base(taskNum, description) { }
+        public Exercise8(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
 
         public override void Body()
         {

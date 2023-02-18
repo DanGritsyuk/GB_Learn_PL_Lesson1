@@ -2,9 +2,14 @@ namespace Lessons
 {
     public abstract class Exercise
     {
-        private string _taskNum = "б/н";
+        public Exercise(int taskNum, string description)
+        {
+            _taskNum = taskNum;
+            _description = description;
+        }
 
-        public Exercise(int taskNum) => _taskNum = taskNum.ToString();
+        private int _taskNum;
+        private string _description;
 
         public abstract void Body();
 
@@ -14,7 +19,7 @@ namespace Lessons
             while (!done)
             {
                 Console.Clear();
-                Console.WriteLine($"Выбрана задача {_taskNum}.");
+                Console.WriteLine($"Выбрана задача {_taskNum.ToString()}.\n {_description}");
                 Console.WriteLine("==========================================");
                 Body();
                 done = End();
