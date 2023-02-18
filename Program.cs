@@ -13,7 +13,8 @@ while (!done)
     "Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.",
     "Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.",
     "Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.",
-    "Задача 19: Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом."
+    "Задача 19: Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.",
+    "Задача 21: Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве."
     };
 
     int task = Lessons.StartMenu.GetMenu(tasksArray, true);
@@ -22,20 +23,20 @@ while (!done)
     switch (task)
     {
         case 0: done = true; Console.Clear(); continue;
-        case 1: exercise = new Lessons.Exercise2(task); break;
-        case 2: exercise = new Lessons.Exercise4(task); break;
-        case 3: exercise = new Lessons.Exercise6(task); break;
-        case 4: exercise = new Lessons.Exercise8(task); break;
-        case 5: exercise = new Lessons.Exercise10(task); break;
-        case 6: exercise = new Lessons.Exercise13(task); break;
-        case 7: exercise = new Lessons.Exercise15(task); break;
+        case 1: exercise = new Lessons.Exercise2(2); break;
+        case 2: exercise = new Lessons.Exercise4(4); break;
+        case 3: exercise = new Lessons.Exercise6(6); break;
+        case 4: exercise = new Lessons.Exercise8(8); break;
+        case 5: exercise = new Lessons.Exercise10(10); break;
+        case 6: exercise = new Lessons.Exercise13(13); break;
+        case 7: exercise = new Lessons.Exercise15(15); break;
+        case 8: exercise = new Lessons.Exercise19(19); break;
         default:
             Console.WriteLine("ЗАДАЧА ЕЩЕ НЕ РЕАЛИЗОВАНА");
             Console.ReadKey();
             continue;
     }
     exercise.Start();
-
-
-    Console.WriteLine($"Программа закрыта.");
 }
+
+Console.WriteLine($"Программа закрыта.");

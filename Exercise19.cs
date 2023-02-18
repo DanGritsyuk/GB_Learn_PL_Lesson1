@@ -12,7 +12,7 @@ namespace Lessons
             int copyNumber, number = copyNumber = InputNumbers.GetNumberFromConsole(10000, 99999, "Введено не пятизначное число. Повторите попытку: ");
 
             int reverceNumber = 0;
-            while (number > 0)
+            while (copyNumber > 0)
             {
                 reverceNumber = reverceNumber * 10 + copyNumber % 10;
                 copyNumber /= 10;
