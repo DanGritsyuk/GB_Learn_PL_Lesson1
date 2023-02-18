@@ -4,46 +4,29 @@ namespace Lessons
 {
     public static class StartMenu
     {
-        public static void GetMenu(string[] itemsForMenu)
+        public static int GetMenu(string[] menuLines)
         {
-            Console.Clear();
-            if (itemsForMenu == null) throw new ArgumentNullException();
-
-            string[] menuLines = new string[itemsForMenu.Length + 1];
-            menuLines[0] = "Выход";
-
-            for (int i = 0; i < itemsForMenu.Length; i++)
-                menuLines[i + 1] = itemsForMenu[i];
 
             int row = Console.CursorTop;
             int col = Console.CursorLeft;
-            int index = 1;
+            int index = 0;
             while (true)
             {
                 DrawMenu(menuLines, row, col, index);
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.DownArrow:
-                        if (index < menuLines.Length)
+                        if (index < menuLines.Length - 1)
                             index++;
                         break;
                     case ConsoleKey.UpArrow:
-                        if (index > 1)
+                        if (index > 0)
                             index--;
                         break;
                     case ConsoleKey.Enter:
-                        if (index == menuLines.Length)
-                            index = 0;
-                        switch (index)
-                        {
-                            case 0:
-                                Console.WriteLine("Выбран выход из приложения");
-                                return;
-                            default:
-                                Console.WriteLine($"Выбран пункт {menuLines[index]}");
-                                break;
-                        }
-                        break;
+                        return index + 1;
+                    case ConsoleKey.Escape:
+                        return 0;
                 }
             }
         }
@@ -51,7 +34,7 @@ namespace Lessons
         {
             var largerLine = menuLines[0].Length;
             Console.SetCursorPosition(col, row);
-            for (int i = 1; i <= menuLines.Length; i++)
+            for (int i = 0; i <= menuLines.Length; i++)
             {
                 if (i == index)
                 {
@@ -62,7 +45,7 @@ namespace Lessons
                 if (i == menuLines.Length)
                 {
                     WriteEndLine(largerLine);
-                    Console.WriteLine(menuLines[0]);
+                    Console.WriteLine("Для выхода нажмите Esc");
                 }
                 else
                 {
@@ -77,14 +60,14 @@ namespace Lessons
 
         private static void WriteEndLine(int lineLength)
         {
-            StringBuilder sb = new StringBuilder("");
+            StringBuilder endLine = new StringBuilder("");
 
             for (int i = 1; i < lineLength; i++)
             {
-                sb.Append("=");
+                endLine.Append("=");
             }
 
-            Console.WriteLine(sb.ToString());
+            Console.WriteLine(endLine.ToString());
         }
     }
 }
