@@ -1,6 +1,6 @@
 // Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
 
-namespace Lesson1
+namespace Lessons
 {
     public class Exercise4 : Exercise
     {
@@ -8,11 +8,11 @@ namespace Lesson1
         public override void Body()
         {
             Console.Write("Введите первое число (a): ");
-            int a = Lesson1.InputNumbers.GetNumberFromConsole();
+            int a = Lessons.InputNumbers.GetNumberFromConsole();
             Console.Write("Введите второе число (b): ");
-            int b = Lesson1.InputNumbers.GetNumberFromConsole();
+            int b = Lessons.InputNumbers.GetNumberFromConsole();
             Console.Write("Введите второе число (c): ");
-            int c = Lesson1.InputNumbers.GetNumberFromConsole();
+            int c = Lessons.InputNumbers.GetNumberFromConsole();
 
             Console.WriteLine($"a = {a}; b = {b}; c = {c} -> max = {(a > b ? (a > c ? a : c) : (b > c ? b : c))}");
         }

@@ -1,6 +1,6 @@
 // Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
 
-namespace Lesson1
+namespace Lessons
 {
     internal class Exercise15 : Exercise
     {

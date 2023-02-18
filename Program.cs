@@ -17,19 +17,19 @@ while (!done)
     while (!correct)
     {
         Console.Write("Введите номер задачи: ");
-        int task = Lesson1.InputNumbers.GetNumberFromConsole();
+        int task = Lessons.InputNumbers.GetNumberFromConsole();
 
-        Lesson1.Exercise exercise;
+        Lessons.Exercise exercise;
         switch (task)
         {
             case 0: done = true; correct = true; Console.Clear(); continue;
-            case 2: exercise = new Lesson1.Exercise2(task); break;
-            case 4: exercise = new Lesson1.Exercise4(task); break;
-            case 6: exercise = new Lesson1.Exercise6(task); break;
-            case 8: exercise = new Lesson1.Exercise8(task); break;
-            case 10: exercise = new Lesson1.Exercise10(task); break;
-            case 13: exercise = new Lesson1.Exercise13(task); break;
-            case 15: exercise = new Lesson1.Exercise15(task); break;
+            case 2: exercise = new Lessons.Exercise2(task); break;
+            case 4: exercise = new Lessons.Exercise4(task); break;
+            case 6: exercise = new Lessons.Exercise6(task); break;
+            case 8: exercise = new Lessons.Exercise8(task); break;
+            case 10: exercise = new Lessons.Exercise10(task); break;
+            case 13: exercise = new Lessons.Exercise13(task); break;
+            case 15: exercise = new Lessons.Exercise15(task); break;
             default:
                 Console.Write("Такой задачи нет. ");
                 continue;

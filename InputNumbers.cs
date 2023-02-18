@@ -1,4 +1,4 @@
-namespace Lesson1
+namespace Lessons
 {
     public static class InputNumbers
     {

@@ -1,6 +1,6 @@
 // Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
 
-namespace Lesson1
+namespace Lessons
 {
     public class Exercise10 : Exercise
     {

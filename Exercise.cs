@@ -1,4 +1,4 @@
-namespace Lesson1
+namespace Lessons
 {
     public abstract class Exercise
     {

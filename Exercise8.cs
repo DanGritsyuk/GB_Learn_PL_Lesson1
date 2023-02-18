@@ -1,6 +1,6 @@
 // Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
 
-namespace Lesson1
+namespace Lessons
 {
     public class Exercise8 : Exercise
     {
@@ -9,7 +9,7 @@ namespace Lesson1
         public override void Body()
         {
             Console.Write("Введите число (n): ");
-            int n = Lesson1.InputNumbers.GetNumberFromConsole();
+            int n = Lessons.InputNumbers.GetNumberFromConsole();
             if (n < 0) n = n * -1;
 
             if (n < 2)
