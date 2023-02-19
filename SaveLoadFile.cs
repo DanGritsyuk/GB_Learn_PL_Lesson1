@@ -1,22 +1,24 @@
-﻿using System.Runtime.Serialization;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
+using System.Xml.Serialization;
 
 namespace Lessons
 {
-    internal static class SaveLoadFile
+    internal class SaveLoadFile
     {
-        internal static void SerializeObject<T>(T serializableObject, string filePath)
+        public void SerializeObject<T>(T serializableObject, string filePath)
         {
-            if (String.IsNullOrWhiteSpace(filePath)) { throw new ArgumentException(); }
+            if (serializableObject == null || filePath == null) { throw new ArgumentException(); }
 
             try
             {
-                var ser = new DataContractSerializer(typeof(T));
-
-                using (XmlWriter xw = XmlWriter.Create(filePath))
+                XmlDocument xmlDocument = new XmlDocument();
+                XmlSerializer serializer = new XmlSerializer(serializableObject.GetType());
+                using (MemoryStream stream = new MemoryStream())
                 {
-                    ser.WriteObject(xw, serializableObject);
+                    serializer.Serialize(stream, serializableObject);
+                    stream.Position = 0;
+                    xmlDocument.Load(stream);
+                    xmlDocument.Save(filePath);
                 }
             }
             catch (Exception ex)
@@ -25,75 +27,35 @@ namespace Lessons
             }
         }
 
-        internal static T DeSerializeObject<T>(string filePath)
+        public T DeSerializeObject<T>(string filePath)
         {
-            if (string.IsNullOrWhiteSpace(filePath)) { return default(T)!; }
+            if (string.IsNullOrEmpty(filePath)) { return default(T)!; }
 
             T objectOut = default(T)!;
 
             try
             {
-                DataContractSerializer dcs = new DataContractSerializer(typeof(T));
-                FileStream fs = new FileStream(filePath, FileMode.Open);
-                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.Load(filePath);
+                string xmlString = xmlDocument.OuterXml;
 
-                objectOut = (T)dcs.ReadObject(reader)!;
-                reader.Close();
-                fs.Close();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return objectOut;
-        }
-
-        public static string SerializeObjectToXmlText<T>(T serializableObject)
-        {
-            DataContractSerializer ser;
-            try
-            {
-                ser = new DataContractSerializer(typeof(T));
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            using (var sw = new Utf8StringWriter())
-            {
-                using (XmlWriter xw = XmlWriter.Create(sw))
+                using (StringReader read = new StringReader(xmlString))
                 {
-                    ser.WriteObject(xw, serializableObject);
+                    Type outType = typeof(T);
+
+                    XmlSerializer serializer = new XmlSerializer(outType);
+                    using (XmlReader reader = new XmlTextReader(read))
+                    {
+                        objectOut = (T)serializer.Deserialize(reader)!;
+                    }
                 }
-                return sw.ToString();
             }
-
-        }
-
-        public static T DeSerializeObjectFromXmlText<T>(string fileText)
-        {
-            if (string.IsNullOrWhiteSpace(fileText)) { return default(T)!; }
-
-            T objectOut = default(T)!;
-
-            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(fileText)))
+            catch (Exception ex)
             {
-                DataContractSerializer dcs = new DataContractSerializer(typeof(T));
-
-                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(stream, new XmlDictionaryReaderQuotas());
-
-                objectOut = (T)dcs.ReadObject(reader)!;
-                reader.Close();
+                throw ex;
             }
 
             return objectOut;
-        }
-
-        private class Utf8StringWriter : StringWriter
-        {
-            public override Encoding Encoding => Encoding.UTF8;
         }
     }
 }

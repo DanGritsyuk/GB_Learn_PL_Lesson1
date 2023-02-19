@@ -9,11 +9,12 @@ namespace Lessons
         public static Dictionary<int, string> GetExerciseOptions()
         {
             var tasksData = new Dictionary<int, string>();
-            var fileName = "Data/ExercisesOption.json";
+            var fileName = "Data/ExercisesOption.xml";
+            var saveLoad = new SaveLoadFile();
 
             try
             {
-                var fileInfo = SaveLoadFile.DeSerializeObject<List<KeyValuePair<int, string>>>(fileName);
+                var fileInfo = saveLoad.DeSerializeObject<List<KeyValuePair<int, string>>>(fileName);
 
                 tasksData = fileInfo.ToDictionary(item => item.Key, item => item.Value);
             }
@@ -30,13 +31,12 @@ namespace Lessons
                 tasksData.Add(21, "Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.");
                 tasksData.Add(23, "Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.");
 
-                Console.WriteLine(DeleteJsonFileOptions(fileName));
-                SaveToJsonfile(tasksData, fileName);
+                SaveToXMLfile(tasksData, saveLoad, fileName);
             }
             return tasksData;
         }
 
-        private static void SaveToJsonfile(Dictionary<int, string> tasksData, string fileName)
+        private static void SaveToXMLfile(Dictionary<int, string> tasksData, SaveLoadFile saveLoad, string fileName)
         {
             var fileInfo = new List<string[]>();
 
@@ -47,19 +47,7 @@ namespace Lessons
                 i++;
             }
 
-            SaveLoadFile.SerializeObject(fileInfo, fileName);
-        }
-
-        private static bool DeleteJsonFileOptions(string fileName)
-        {
-            bool isDeleted = false;
-            try
-            {
-                System.IO.File.Delete(fileName);
-                isDeleted = true;
-            }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-            return isDeleted;
+            saveLoad.SerializeObject(fileInfo, fileName);
         }
     }
 }
