@@ -4,50 +4,41 @@ namespace Lessons
     {
         public static void StratGetEditor()
         {
+            var execiseData = new ExeciseData();
+            var menuItems = new string[] { "Добавить задачу", "Редактировать задачу", "Удалить задачу" };
 
+            bool doneEdit = false;
+            while (!doneEdit)
+            {
+                Console.Clear();
+                Console.WriteLine(execiseData.ToString());
+                Console.WriteLine();
+                var selectedEditMenuItem = StartMenu.GetMenu(menuItems, true);
+
+                switch (selectedEditMenuItem)
+                {
+                    case 0: doneEdit = true; break;
+                    case 1: AddNewExercise(); break;
+                    case 2: DeleteExercise(); break;
+                    case 3: DeleteExercise(); break;
+                }
+            }
         }
-        public static Dictionary<int, string> GetExerciseOptions()
+        // Все еще в разраотке.
+        private static void AddNewExercise()
         {
-            var tasksData = new Dictionary<int, string>();
-            var fileName = "Data/ExercisesOption.xml";
-            var saveLoad = new SaveLoadFile();
-
-            try
-            {
-                var fileInfo = saveLoad.DeSerializeObject<List<KeyValuePair<int, string>>>(fileName);
-
-                tasksData = fileInfo.ToDictionary(item => item.Key, item => item.Value);
-            }
-            catch
-            {
-                tasksData.Add(2, "Напишите программу, которая на вход принимает два числа и выдаёт, какое число большее, а какое меньшее.");
-                tasksData.Add(4, "Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.");
-                tasksData.Add(6, "Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).");
-                tasksData.Add(8, "Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.");
-                tasksData.Add(10, "Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.");
-                tasksData.Add(13, "Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.");
-                tasksData.Add(15, "Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.");
-                tasksData.Add(19, "Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.");
-                tasksData.Add(21, "Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.");
-                tasksData.Add(23, "Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.");
-
-                SaveToXMLfile(tasksData, saveLoad, fileName);
-            }
-            return tasksData;
+            Console.Clear();
+            Console.ReadKey();
         }
 
-        private static void SaveToXMLfile(Dictionary<int, string> tasksData, SaveLoadFile saveLoad, string fileName)
+        private static void EditExercise()
         {
-            var fileInfo = new List<string[]>();
+            AddNewExercise();
+        }
 
-            int i = 0;
-            foreach (var taskData in tasksData)
-            {
-                fileInfo.Add(new string[] { taskData.Key.ToString(), taskData.Value.ToString() });
-                i++;
-            }
-
-            saveLoad.SerializeObject(fileInfo, fileName);
+        private static void DeleteExercise()
+        {
+            AddNewExercise();
         }
     }
 }

@@ -13,24 +13,24 @@ while (!done)
     Console.WriteLine("ДОМАШНЕЕ ЗАДАНИЕ");
     Console.WriteLine("");
 
-    Dictionary<int, string> tasksData = EditExerciseText.GetExerciseOptions();
+    var execisesData = new ExeciseData();
 
-    var taskData = StartMenu.GetMenu(tasksData, true);
+    var execiseData = StartMenu.GetMenu(execisesData, true);
 
     Exercise exercise;
-    switch (taskData.Key)
+    switch (execiseData.Key)
     {
         case 0: done = true; Console.Clear(); continue;
-        case 2: exercise = new Exercise2(taskData); break;
-        case 4: exercise = new Exercise4(taskData); break;
-        case 6: exercise = new Exercise6(taskData); break;
-        case 8: exercise = new Exercise8(taskData); break;
-        case 10: exercise = new Exercise10(taskData); break;
-        case 13: exercise = new Exercise13(taskData); break;
-        case 15: exercise = new Exercise15(taskData); break;
-        case 19: exercise = new Exercise19(taskData); break;
-        case 21: exercise = new Exercise21(taskData); break;
-        case 23: exercise = new Exercise23(taskData); break;
+        case 2: exercise = new Exercise2(execiseData); break;
+        case 4: exercise = new Exercise4(execiseData); break;
+        case 6: exercise = new Exercise6(execiseData); break;
+        case 8: exercise = new Exercise8(execiseData); break;
+        case 10: exercise = new Exercise10(execiseData); break;
+        case 13: exercise = new Exercise13(execiseData); break;
+        case 15: exercise = new Exercise15(execiseData); break;
+        case 19: exercise = new Exercise19(execiseData); break;
+        case 21: exercise = new Exercise21(execiseData); break;
+        case 23: exercise = new Exercise23(execiseData); break;
         default:
             Console.WriteLine("ЗАДАЧА ЕЩЕ НЕ РЕАЛИЗОВАНА");
             Console.ReadKey();

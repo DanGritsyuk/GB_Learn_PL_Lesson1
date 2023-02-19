@@ -4,26 +4,19 @@ namespace Lessons
 {
     public static class StartMenu
     {
-        public static KeyValuePair<int, string> GetMenu(Dictionary<int, string> menuItems, bool showHelpControl = false)
+        public static KeyValuePair<int, string> GetMenu(ExeciseData menuItems, bool showHelpControl = false)
         {
-            int taskIndex = 0, taskKey = 0;
+            int taskKey = 0;
             string taskText = "";
 
-            var tasksArrayKeys = new int[menuItems.Count];
-            var tasksArrayValues = new string[tasksArrayKeys.Length];
-            foreach (var taskData in menuItems)
-            {
-                tasksArrayKeys[taskIndex] = taskData.Key;
-                tasksArrayValues[taskIndex] = $"Задача{(taskData.Key < 10 ? "  " : " ")}{taskData.Key}: {taskData.Value}";
+            Tuple<int[], string[]> dataForPrintMenu = menuItems.GetTextToConsole();
 
-                taskIndex++;
-            }
-            taskIndex = Lessons.StartMenu.GetMenu(tasksArrayValues, showHelpControl);
+            int taskIndex = Lessons.StartMenu.GetMenu(dataForPrintMenu.Item2, showHelpControl);
             if (taskIndex > 0)
             {
                 taskIndex--;
-                taskKey = tasksArrayKeys[taskIndex];
-                taskText = menuItems[taskKey];
+                taskKey = dataForPrintMenu.Item1[taskIndex];
+                taskText = menuItems.DataList[taskKey];
             }
 
             return new KeyValuePair<int, string>(taskKey, taskText);
