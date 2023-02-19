@@ -9,7 +9,37 @@ namespace Lessons
                 Console.Write("Введено некоректное число. Повторите попытку: ");
             return number;
         }
+        public static int GetNumberFromConsole(int[] range, bool isInRange, string errorMessage)
+        {
+            int n = 0;
+            while (true)
+            {
+                n = InputNumbers.GetNumberFromConsole();
 
+                if (isInRange)
+                {
+                    foreach (var x in range)
+                    {
+                        if (x == n) return n;
+                    }
+                    Console.WriteLine(errorMessage);
+                }
+                else
+                {
+                    bool notInRange = true;
+                    foreach (var x in range)
+                    {
+                        if (x == n)
+                        {
+                            Console.WriteLine(errorMessage);
+                            notInRange = false;
+                            break;
+                        }
+                    }
+                    if (notInRange) return n;
+                }
+            }
+        }
 
         public static int GetNumberFromConsole(int first, int last, string errorMessage)
         {

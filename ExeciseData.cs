@@ -22,6 +22,7 @@ namespace Lessons
         private Dictionary<int, string> _dataList;
         private int _maxIndex;
         private int _length;
+        private const string fileName = "Data/ExercisesOption.xml";
         public Dictionary<int, string> DataList
         {
             get { return _dataList; }
@@ -34,6 +35,15 @@ namespace Lessons
         {
             get { return _length; }
         }
+
+        public void AddNewExercise(int index, string text)
+        {
+            if (!_dataList.ContainsKey(index))
+                _dataList.Add(index, text);
+        }
+
+        public void UpdateExercise(int key, string text) => _dataList[key] = text;
+        public void RemoveExercise(int key) => _dataList.Remove(key);
 
         public Tuple<int[], string[]> GetTextToConsole()
         {
@@ -65,6 +75,8 @@ namespace Lessons
             return new Tuple<int[], string[]>(tasksArrayKeys, tasksArrayValues);
         }
 
+        public void SaveToFile() => SaveToXMLfile(this.DataList, new SaveLoadFile());
+
         public override string ToString()
         {
             var sb = new StringBuilder("СОХРАНЕНЫЕ ДАННЫЕ:");
@@ -81,15 +93,14 @@ namespace Lessons
 
         private static Dictionary<int, string> LoadExerciseOptions()
         {
-            var fileName = "Data/ExercisesOption.xml";
             var saveLoad = new SaveLoadFile();
             var dataFromFile = new Dictionary<int, string>();
 
             try
             {
-                var fileInfo = saveLoad.DeSerializeObject<List<KeyValuePair<int, string>>>(fileName);
+                var fileInfo = saveLoad.DeSerializeObject<List<string[]>>(fileName);
 
-                dataFromFile = fileInfo.ToDictionary(item => item.Key, item => item.Value);
+                dataFromFile = fileInfo.ToDictionary(item => int.Parse(item[0]), item => item[1]);
             }
             catch
             {
@@ -107,20 +118,16 @@ namespace Lessons
                 if (!Directory.Exists("Data"))
                     Directory.CreateDirectory("Data");
 
-                SaveToXMLfile(dataFromFile, saveLoad, fileName);
+                SaveToXMLfile(dataFromFile, saveLoad);
             }
             return dataFromFile;
         }
-        private static void SaveToXMLfile(Dictionary<int, string> tasksData, SaveLoadFile saveLoad, string fileName)
+        private static void SaveToXMLfile(Dictionary<int, string> tasksData, SaveLoadFile saveLoad)
         {
             var fileInfo = new List<string[]>();
 
-            int i = 0;
             foreach (var taskData in tasksData)
-            {
                 fileInfo.Add(new string[] { taskData.Key.ToString(), taskData.Value.ToString() });
-                i++;
-            }
 
             saveLoad.SerializeObject(fileInfo, fileName);
         }
