@@ -28,6 +28,7 @@ namespace Lessons
         private static void AddNewExercise()
         {
             Console.Clear();
+            Console.WriteLine("Скоро реализую");
             Console.ReadKey();
         }
 
