@@ -23,7 +23,7 @@ namespace Lessons
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine("Explicitly specified:{0}{1}", Environment.NewLine, ex.StackTrace);
             }
         }
 
@@ -52,7 +52,7 @@ namespace Lessons
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine("Explicitly specified:{0}{1}", Environment.NewLine, ex.StackTrace);
             }
 
             return objectOut;
