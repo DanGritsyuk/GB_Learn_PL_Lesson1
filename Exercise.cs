@@ -7,6 +7,11 @@ namespace Lessons
             _taskNum = taskNum;
             _description = description;
         }
+        public Exercise(KeyValuePair<int, string> taskData)
+        {
+            _taskNum = taskData.Key;
+            _description = taskData.Value;
+        }
 
         private int _taskNum;
         private string _description;
