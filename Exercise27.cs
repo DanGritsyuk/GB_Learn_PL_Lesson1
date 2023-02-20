@@ -9,7 +9,7 @@ namespace Lessons
         public override void Body()
         {
             Console.Write("Введите число: ");
-            int n = InputNumbers.GetNumberFromConsole();
+            int n = InputNumbers.GetNumberFromConsole<int>("Введено некоректное число.");
 
             Console.WriteLine($"Сумма цифр числа {n} равна {GetSumDigits(n)}");
         }

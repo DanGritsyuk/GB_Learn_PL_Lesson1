@@ -1,20 +1,38 @@
+using System.ComponentModel;
+
 namespace Lessons
 {
     public static class InputNumbers
     {
-        public static int GetNumberFromConsole()
+        public static T GetNumberFromConsole<T>(string errorMessage)
         {
-            int number = 0;
-            while (!int.TryParse(Console.ReadLine(), out number))
-                Console.Write("Введено некоректное число. Повторите попытку: ");
-            return number;
+            Func<T> GetObject = () =>
+            {
+                var converter = TypeDescriptor.GetConverter(typeof(T));
+                if (converter != null)
+                    return (T)converter.ConvertFromString(Console.ReadLine()!)!;
+                throw new NullReferenceException();
+            };
+
+            while (true)
+            {
+                try
+                {
+                    return GetObject();
+                }
+                catch
+                {
+                    Console.Write($"{errorMessage} Повторите попытку: ");
+                }
+            }
         }
+
         public static int GetNumberFromConsole(int[] range, bool isInRange, string errorMessage)
         {
             int n = 0;
             while (true)
             {
-                n = InputNumbers.GetNumberFromConsole();
+                n = InputNumbers.GetNumberFromConsole<int>("Введено некоректное число.");
 
                 if (isInRange)
                 {
@@ -48,7 +66,7 @@ namespace Lessons
             int n = 0;
             Func<bool> tryGetThreedigitFromConsole = () => // Функция для вызова одного и того же кода в нескольких местах в этом методе 
             {
-                n = InputNumbers.GetNumberFromConsole();
+                n = InputNumbers.GetNumberFromConsole<int>("Введено некоректное число.");
                 return n >= first && n <= last;
             };
 

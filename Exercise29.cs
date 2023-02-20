@@ -21,7 +21,7 @@ namespace Lessons
             for (int i = 0; i < length; i++)
             {
                 Console.Write($"Введите {i} значение: ");
-                array[i] = InputNumbers.GetNumberFromConsole();
+                array[i] = InputNumbers.GetNumberFromConsole<int>("Введено некоректное число.");
             }
 
             return array;

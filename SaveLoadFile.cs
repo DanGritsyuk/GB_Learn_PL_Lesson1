@@ -21,10 +21,7 @@ namespace Lessons
                     xmlDocument.Save(filePath);
                 }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            catch { }
         }
 
         public T DeSerializeObject<T>(string filePath)
@@ -50,10 +47,7 @@ namespace Lessons
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            catch { }
 
             return objectOut;
         }

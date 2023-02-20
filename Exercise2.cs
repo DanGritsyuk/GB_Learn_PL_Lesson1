@@ -8,10 +8,12 @@ namespace Lessons
         public Exercise2(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
         public override void Body()
         {
+            string errorMessage = "Введено некоректное число.";
+
             Console.Write("Введите первое число (a): ");
-            int a = Lessons.InputNumbers.GetNumberFromConsole();
+            int a = Lessons.InputNumbers.GetNumberFromConsole<int>(errorMessage);
             Console.Write("Введите второе число (b): ");
-            int b = Lessons.InputNumbers.GetNumberFromConsole();
+            int b = Lessons.InputNumbers.GetNumberFromConsole<int>(errorMessage);
 
             Console.WriteLine($"a = {a}; b = {b} -> max = {(a > b ? a : b)}");
         }

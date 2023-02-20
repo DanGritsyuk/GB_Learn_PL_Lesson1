@@ -19,12 +19,13 @@ namespace Lessons
 
         struct Point3D
         {
+            string errorMessage = "Введено некоректное число.";
             public Point3D()
             {
                 Console.WriteLine("Введите координаты: ");
-                Console.Write("x= "); this.x = InputNumbers.GetNumberFromConsole();
-                Console.Write("y= "); this.y = InputNumbers.GetNumberFromConsole();
-                Console.Write("z= "); this.z = InputNumbers.GetNumberFromConsole();
+                Console.Write("x= "); this.x = InputNumbers.GetNumberFromConsole<int>(errorMessage);
+                Console.Write("y= "); this.y = InputNumbers.GetNumberFromConsole<int>(errorMessage);
+                Console.Write("z= "); this.z = InputNumbers.GetNumberFromConsole<int>(errorMessage);
                 Console.WriteLine();
             }
 
