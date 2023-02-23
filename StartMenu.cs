@@ -9,7 +9,7 @@ namespace Lessons
             int taskKey = 0;
             string taskText = "";
 
-            Tuple<int[], string[]> dataForPrintMenu = menuItems.GetTextToConsole();
+            Tuple<int[], string[]> dataForPrintMenu = menuItems.GetTextForConsole();
 
             int taskIndex = Lessons.StartMenu.GetMenu(dataForPrintMenu.Item2, showHelpControl);
             if (taskIndex > 0)

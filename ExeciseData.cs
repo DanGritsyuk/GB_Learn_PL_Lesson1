@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Lessons
 {
@@ -45,7 +41,7 @@ namespace Lessons
         public void UpdateExercise(int key, string text) => _dataList[key] = text;
         public void RemoveExercise(int key) => _dataList.Remove(key);
 
-        public Tuple<int[], string[]> GetTextToConsole()
+        public Tuple<int[], string[]> GetTextForConsole()
         {
             int CountNumbers(int num)
             {
@@ -81,7 +77,7 @@ namespace Lessons
         {
             var sb = new StringBuilder("СОХРАНЕНЫЕ ДАННЫЕ:");
 
-            Tuple<int[], string[]> dataForPrint = GetTextToConsole();
+            Tuple<int[], string[]> dataForPrint = GetTextForConsole();
             foreach (var item in dataForPrint.Item2)
             {
                 sb.Append("\n");
