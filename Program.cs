@@ -1,21 +1,32 @@
 ﻿using Lessons;
 
+int key = 0;
 if (args.Length > 0)
     if (args[0].ToLower() == "edit")
     {
         EditExerciseText.StratGetEditor();
     }
+int.TryParse(args[0], out key);
 
 bool done = false;
 while (!done)
 {
-    Console.Clear();
-    Console.WriteLine("ДОМАШНЕЕ ЗАДАНИЕ");
-    Console.WriteLine("");
-
     var execisesData = new ExeciseData();
+    KeyValuePair<int, string> execiseData;
 
-    var execiseData = StartMenu.GetMenu(execisesData, true);
+    if (key == 0)
+    {
+        Console.Clear();
+        Console.WriteLine("ДОМАШНЕЕ ЗАДАНИЕ");
+        Console.WriteLine("");
+
+        execiseData = StartMenu.GetMenu(execisesData, true);
+    }
+    else
+    {
+        execiseData = execisesData.DataList.Where(item => item.Key == key).FirstOrDefault();
+        key = 0;
+    }
 
     Exercise exercise;
     switch (execiseData.Key)
