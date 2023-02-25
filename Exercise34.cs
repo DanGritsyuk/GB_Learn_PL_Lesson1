@@ -22,7 +22,7 @@ namespace Lessons
             }
             Console.Write("] -> ");
             if (evenCount == 0) Console.Write("Нет четных чисел");
-            else Console.Write($"четных чисел: {evenCount}");
+            else Console.WriteLine($"четных чисел: {evenCount}");
         }
     }
 }

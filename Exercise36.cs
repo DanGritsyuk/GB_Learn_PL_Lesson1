@@ -21,8 +21,9 @@ namespace Lessons
                 if (i % 2 != 0) oddIndexValuesSum += array[i];
                 Console.Write($" {array[i]} ");
             }
-            Console.Write("");
-            Console.Write($"] равна: {oddIndexValuesSum}");
+            Console.WriteLine($"] равна: {oddIndexValuesSum}");
         }
     }
+
+
 }

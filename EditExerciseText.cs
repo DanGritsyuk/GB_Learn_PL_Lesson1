@@ -25,7 +25,6 @@ namespace Lessons
                 }
             }
         }
-        // Все еще в разработке.
         private static void AddNewExercise(ExeciseData execiseData)
         {
             if (execiseData == null) throw new ArgumentException();

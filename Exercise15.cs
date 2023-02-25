@@ -12,7 +12,7 @@ namespace Lessons
             Console.Write("Введите число дня недели: ");
             int weekDay = InputNumbers.GetNumberFromConsole(1, 7, "Такого дня недели нет. Введите число от 1 до 7: ");
 
-            Console.Write($"День {weekDay} - это {NameOfDayWeek(weekDay)}, потому {(weekDay > 5 ? "выходной" : "будний")}");
+            Console.WriteLine($"День {weekDay} - это {NameOfDayWeek(weekDay)}, потому {(weekDay > 5 ? "выходной" : "будний")}");
         }
 
         private string NameOfDayWeek(int dayWeek)

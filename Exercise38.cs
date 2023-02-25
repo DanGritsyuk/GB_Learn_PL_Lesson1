@@ -26,8 +26,7 @@ namespace Lessons
                 else if (array[i] > max) max = array[i];
                 answerToConsole.Append($" {array[i]} ");
             }
-            Console.Write("");
-            Console.Write($"{answerToConsole.ToString()} ] равна: {max - min}");
+            Console.WriteLine($"{answerToConsole.ToString()} ] равна: {max - min}");
         }
     }
 }

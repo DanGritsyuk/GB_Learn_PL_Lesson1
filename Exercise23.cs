@@ -20,6 +20,7 @@ namespace Lessons
             {
                 Console.Write($", {i * i * i}");
             }
+            Console.WriteLine();
         }
     }
 }

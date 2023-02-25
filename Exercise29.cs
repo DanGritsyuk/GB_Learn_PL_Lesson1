@@ -13,6 +13,7 @@ namespace Lessons
             int[] array = GetArrayFromConsole(lengthArray);
 
             PrintArray(array);
+            Console.WriteLine();
         }
 
         private int[] GetArrayFromConsole(int length)
