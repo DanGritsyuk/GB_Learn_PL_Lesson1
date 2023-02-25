@@ -33,8 +33,8 @@ namespace Lessons
         protected bool End()
         {
             Console.WriteLine();
-            Console.WriteLine("Выйти в главное меню?");
-            int answer = Lessons.StartMenu.GetMenu(new string[] { "Да", "Нет" });
+            Console.WriteLine("Выберите слудующий шаг:");
+            int answer = Lessons.StartMenu.GetMenu(new string[] { "Выход в главное меню.", "Повторить ввод." });
             return answer < 2;
         }
     }
