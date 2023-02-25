@@ -26,6 +26,7 @@ while (!done)
     {
         execiseData = execisesData.DataList.Where(item => item.Key == key).FirstOrDefault();
         key = 0;
+        if (execiseData.Key == 0) continue;
     }
 
     Exercise exercise;
