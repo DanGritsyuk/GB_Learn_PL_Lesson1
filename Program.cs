@@ -38,6 +38,7 @@ while (!done)
         case 36: exercise = new Exercise36(execiseData); break;
         case 38: exercise = new Exercise38(execiseData); break;
         case 41: exercise = new Exercise41(execiseData); break;
+        case 43: exercise = new Exercise43(execiseData); break;
         default:
             Console.WriteLine("ЗАДАЧА ЕЩЕ НЕ РЕАЛИЗОВАНА");
             Console.ReadKey();
