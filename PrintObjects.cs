@@ -1,19 +1,19 @@
 namespace Lessons
 {
-    public class PrintObjects
+    public static class PrintObjects
     {
-        public void PrintArray<T>(T[] arr)
+        public static void PrintArray<T>(T[] arr)
         {
             for (int i = 0; i < arr.Length; i++)
                 Console.Write($"{arr[i]} ");
             Console.WriteLine();
         }
-        public void PrintArray<T>(T[,] arr)
+        public static void PrintArray<T>(T[,] arr)
         {
             Console.WriteLine();
             for (int i = -1; i <= arr.GetLength(0); i++)
             {
-                for (int j = 0; j < arr.GetLength(1); i++)
+                for (int j = 0; j < arr.GetLength(1); j++)
                 {
                     if (i == -1 || i == arr.GetLength(0))
                         Console.Write("==");
