@@ -2,6 +2,13 @@ namespace Lessons
 {
     public static class EditExerciseText
     {
+        public static bool TryStratGetEditor()
+        {
+            var isStarted = true;
+            try { StratGetEditor(); }
+            catch { isStarted = false; }
+            return isStarted;
+        }
         public static void StratGetEditor()
         {
             var menuItems = new string[] { "Добавить задачу", "Редактировать задачу", "Удалить задачу" };

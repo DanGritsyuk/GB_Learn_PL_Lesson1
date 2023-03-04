@@ -1,12 +1,14 @@
 ﻿using Lessons;
 
 int key = 0;
+bool staredtWithTask = false;
 if (args.Length > 0)
+{
     if (args[0].ToLower() == "edit")
-    {
-        EditExerciseText.StratGetEditor();
-    }
-int.TryParse(args[0], out key);
+        EditExerciseText.TryStratGetEditor();
+    else
+        staredtWithTask = int.TryParse(args[0], out key);
+}
 
 bool done = false;
 while (!done)
@@ -14,19 +16,19 @@ while (!done)
     var execisesData = new ExeciseData();
     KeyValuePair<int, string> execiseData;
 
-    if (key == 0)
+    if (staredtWithTask)
+    {
+        execiseData = execisesData.DataList.Where(item => item.Key == key).FirstOrDefault();
+        staredtWithTask = false;
+        if (execiseData.Key == 0) continue;
+    }
+    else
     {
         Console.Clear();
         Console.WriteLine("ДОМАШНЕЕ ЗАДАНИЕ");
         Console.WriteLine("");
 
         execiseData = StartMenu.GetMenu(execisesData, true);
-    }
-    else
-    {
-        execiseData = execisesData.DataList.Where(item => item.Key == key).FirstOrDefault();
-        key = 0;
-        if (execiseData.Key == 0) continue;
     }
 
     Exercise exercise;
