@@ -15,7 +15,7 @@ namespace Lessons
             for (int i = 0; i < array.Length; i++)
             {
                 Console.Write($"Введите {i + 1} число: ");
-                array[i] = InputNumbers.GetNumberFromConsole<int>(errorMessage);
+                array[i] = InputNumbers.GetObjectFromConsole<int>(errorMessage);
                 countPos += array[i] > 0 ? 1 : 0;
             }
             Console.WriteLine();

@@ -9,7 +9,7 @@ namespace Lessons
         public override void Body()
         {
             Console.Write("Введите число A: ");
-            int a = InputNumbers.GetNumberFromConsole<int>("Введено некоректное число.");
+            int a = InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
             Console.Write("Введите число B: ");
             int b = InputNumbers.GetNumberFromConsole(0, int.MaxValue, "Число должно быть натуральным. Повторите попытку:");
 

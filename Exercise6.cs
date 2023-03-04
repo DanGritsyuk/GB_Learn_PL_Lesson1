@@ -10,7 +10,7 @@ namespace Lessons
         public override void Body()
         {
             Console.Write("Введите число (a): ");
-            int a = Lessons.InputNumbers.GetNumberFromConsole<int>("Введено некоректное число.");
+            int a = Lessons.InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
 
             Console.WriteLine($"{a} - {(a % 2 == 0 ? "четное" : "нечетное")}");
         }

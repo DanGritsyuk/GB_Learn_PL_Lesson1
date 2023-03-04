@@ -32,9 +32,9 @@ namespace Lessons
 
                 this.Name = name;
                 Console.WriteLine($"Введите коэфицент для прямой {name}");
-                this.Coefficient = InputNumbers.GetNumberFromConsole<double>(errorMessage);
+                this.Coefficient = InputNumbers.GetObjectFromConsole<double>(errorMessage);
                 Console.WriteLine($"Введите константу для прямой {name}");
-                this.Constant = InputNumbers.GetNumberFromConsole<double>(errorMessage);
+                this.Constant = InputNumbers.GetObjectFromConsole<double>(errorMessage);
             }
 
             public string Name;

@@ -4,26 +4,15 @@ namespace Lessons
 {
     public static class InputNumbers
     {
-        public static T GetNumberFromConsole<T>(string errorMessage)
-        {
-            Func<T> GetObject = () =>
-            {
-                var converter = TypeDescriptor.GetConverter(typeof(T));
-                if (converter != null)
-                    return (T)converter.ConvertFromString(Console.ReadLine()!)!;
-                throw new NullReferenceException();
-            };
+        public static T[] GetArrayFromConsole<T>() =>
+            Console.ReadLine()!.Split(' ', '.', ',', ';').Where(i => TryParseObject<T>(i, out _)).Select(ParseObject<T>).ToArray<T>();
 
+        public static T GetObjectFromConsole<T>(string errorMessage)
+        {
             while (true)
             {
-                try
-                {
-                    return GetObject();
-                }
-                catch
-                {
-                    Console.Write($"{errorMessage} Повторите попытку: ");
-                }
+                try { return ParseObject<T>(Console.ReadLine()!); }
+                catch { Console.Write($"{errorMessage} Повторите попытку: "); }
             }
         }
 
@@ -32,7 +21,7 @@ namespace Lessons
             int n = 0;
             while (true)
             {
-                n = InputNumbers.GetNumberFromConsole<int>("Введено некоректное число.");
+                n = InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
 
                 if (isInRange)
                 {
@@ -66,7 +55,7 @@ namespace Lessons
             int n = 0;
             Func<bool> tryGetThreedigitFromConsole = () => // Функция для вызова одного и того же кода в нескольких местах в этом методе 
             {
-                n = InputNumbers.GetNumberFromConsole<int>("Введено некоректное число.");
+                n = InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
                 return n >= first && n <= last;
             };
 
@@ -77,6 +66,26 @@ namespace Lessons
                 nCorrect = tryGetThreedigitFromConsole();
             }
             return n;
+        }
+        private static bool TryParseObject<T>(string strObjectInfo, out T result)
+        {
+            result = default!;
+            bool isCorrectOnject = true;
+            try
+            {
+                var converter = TypeDescriptor.GetConverter(typeof(T));
+                if (converter != null)
+                    result = (T)converter.ConvertFromString(strObjectInfo)!;
+            }
+            catch { isCorrectOnject = false; }
+
+            return isCorrectOnject;
+        }
+
+        private static T ParseObject<T>(string str)
+        {
+            T result;
+            return TryParseObject(str, out result) ? result : throw new ArgumentException();
         }
     }
 }

@@ -11,9 +11,9 @@ namespace Lessons
             string errorMessage = "Введено некоректное число.";
 
             Console.Write("Введите первое число (a): ");
-            int a = Lessons.InputNumbers.GetNumberFromConsole<int>(errorMessage);
+            int a = Lessons.InputNumbers.GetObjectFromConsole<int>(errorMessage);
             Console.Write("Введите второе число (b): ");
-            int b = Lessons.InputNumbers.GetNumberFromConsole<int>(errorMessage);
+            int b = Lessons.InputNumbers.GetObjectFromConsole<int>(errorMessage);
 
             Console.WriteLine($"a = {a}; b = {b} -> max = {(a > b ? a : b)}");
         }

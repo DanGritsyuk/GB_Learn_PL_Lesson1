@@ -11,11 +11,11 @@ namespace Lessons
             string errorMessage = "Введено некоректное число.";
 
             Console.Write("Введите первое число (a): ");
-            int a = Lessons.InputNumbers.GetNumberFromConsole<int>(errorMessage);
+            int a = Lessons.InputNumbers.GetObjectFromConsole<int>(errorMessage);
             Console.Write("Введите второе число (b): ");
-            int b = Lessons.InputNumbers.GetNumberFromConsole<int>(errorMessage);
+            int b = Lessons.InputNumbers.GetObjectFromConsole<int>(errorMessage);
             Console.Write("Введите второе число (c): ");
-            int c = Lessons.InputNumbers.GetNumberFromConsole<int>(errorMessage);
+            int c = Lessons.InputNumbers.GetObjectFromConsole<int>(errorMessage);
 
             Console.WriteLine($"a = {a}; b = {b}; c = {c} -> max = {(a > b ? (a > c ? a : c) : (b > c ? b : c))}");
         }

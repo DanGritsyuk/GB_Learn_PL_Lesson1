@@ -10,7 +10,7 @@ namespace Lessons
         public override void Body()
         {
             Console.Write("Введите число (n): ");
-            int n = InputNumbers.GetNumberFromConsole<int>("Введено некоректное число.");
+            int n = InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
 
             Console.Write($"{n} -> ");
             if (n > 99)

@@ -15,13 +15,13 @@ namespace Lessons
             var errorMessage = "Введено некоректное число.";
 
             Console.Write("Введите 0 элемент: ");
-            array[0] = min = max = InputNumbers.GetNumberFromConsole<float>(errorMessage);
+            array[0] = min = max = InputNumbers.GetObjectFromConsole<float>(errorMessage);
 
             StringBuilder answerToConsole = new StringBuilder("Разница между минимальным и максимальным значениями массива [ ");
             for (int i = 1; i < array.Length; i++)
             {
                 Console.Write($"Введите {i} элемент: ");
-                array[i] = InputNumbers.GetNumberFromConsole<float>(errorMessage);
+                array[i] = InputNumbers.GetObjectFromConsole<float>(errorMessage);
                 if (array[i] < min) min = array[i];
                 else if (array[i] > max) max = array[i];
                 answerToConsole.Append($" {array[i]} ");

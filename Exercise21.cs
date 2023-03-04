@@ -23,9 +23,9 @@ namespace Lessons
             public Point3D()
             {
                 Console.WriteLine("Введите координаты: ");
-                Console.Write("x= "); this.x = InputNumbers.GetNumberFromConsole<int>(errorMessage);
-                Console.Write("y= "); this.y = InputNumbers.GetNumberFromConsole<int>(errorMessage);
-                Console.Write("z= "); this.z = InputNumbers.GetNumberFromConsole<int>(errorMessage);
+                Console.Write("x= "); this.x = InputNumbers.GetObjectFromConsole<int>(errorMessage);
+                Console.Write("y= "); this.y = InputNumbers.GetObjectFromConsole<int>(errorMessage);
+                Console.Write("z= "); this.z = InputNumbers.GetObjectFromConsole<int>(errorMessage);
                 Console.WriteLine();
             }
 
