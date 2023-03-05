@@ -7,7 +7,21 @@ namespace Lessons
         public Exercise54(KeyValuePair<int, string> taskData) : base(taskData) { }
         public override void Body()
         {
-            throw new NotImplementedException();
+            int[,] array = InputNumbers.GetTwoDimensionalArrayFromConsole<int>();
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int k = 0; k < array.GetLength(1); k++)
+                {
+                    for (int j = 0; j < array.GetLength(1) - 1; j++)
+                    {
+                        if (array[i, j] < array[i, j + 1])
+                            (array[i, j], array[i, j + 1]) = (array[i, j + 1], array[i, j]);
+                    }
+                }
+            }
+
+            PrintObjects.PrintArray<int>(array);
         }
     }
 }
