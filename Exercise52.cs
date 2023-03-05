@@ -20,7 +20,7 @@ namespace Lessons
                 averageArray[j] = double.Round((sum / (double)valuesArray.GetLength(0)), 1);
             }
 
-            Console.Write("Средне арифметическое столбцов массива:");
+            Console.Write("Средне арифметическое столбцов массива: ");
             PrintObjects.PrintArray<double>(averageArray);
         }
     }

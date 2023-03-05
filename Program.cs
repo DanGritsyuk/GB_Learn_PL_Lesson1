@@ -44,7 +44,6 @@ while (!done)
         }
         catch (Exception ex)
         {
-            //Console.WriteLine("ЗАДАЧА ЕЩЕ НЕ РЕАЛИЗОВАНА");
 #if DEBUG
             Console.WriteLine(ex);
 #else
