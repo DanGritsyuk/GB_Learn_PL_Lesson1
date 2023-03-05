@@ -7,6 +7,39 @@ namespace Lessons
         public static T[] GetArrayFromConsole<T>() =>
             Console.ReadLine()!.Split(' ', '.', ',', ';').Where(i => TryParseObject<T>(i, out _)).Select(ParseObject<T>).ToArray<T>();
 
+        public static T[,] GetTwoDimensionalArrayFromConsole<T>()
+        {
+            Console.WriteLine("Введите длину массива: ");
+            int col = InputNumbers.GetNumberFromConsole(1, int.MaxValue, "Некорректное число. Повторите попытку:");
+            Console.WriteLine("Введите высоту массива: ");
+            int row = InputNumbers.GetNumberFromConsole(1, int.MaxValue, "Некорректное число. Повторите попытку:");
+            var array = new T[row, col];
+
+            Console.WriteLine();
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                Console.WriteLine($"Введите {col} чисел для строки {i + 1}:");
+                T[] rowArrayString;
+
+                while (true)
+                {
+                    rowArrayString = GetArrayFromConsole<T>();
+                    if (rowArrayString.Length == col)
+                        break;
+                    else if (rowArrayString.Length > col)
+                        Console.WriteLine($"Введено больше {col} чисел. Повторите попытку:");
+                    else if (rowArrayString.Length < col)
+                        Console.WriteLine($"Введено меньше {col} чисел. Повторите попытку:");
+                }
+
+                for (int j = 0; j < rowArrayString.Length; j++)
+                {
+                    array[i, j] = rowArrayString[j];
+                }
+            }
+            return array;
+        }
+
         public static T GetObjectFromConsole<T>(string errorMessage)
         {
             while (true)

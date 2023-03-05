@@ -9,7 +9,19 @@ namespace Lessons
 
         public override void Body()
         {
-            throw new NotImplementedException();
+            int[,] valuesArray = InputNumbers.GetTwoDimensionalArrayFromConsole<int>();
+            double[] averageArray = new double[valuesArray.GetLength(1)];
+
+            for (int j = 0; j < averageArray.Length; j++)
+            {
+                double sum = 0;
+                for (int i = 0; i < valuesArray.GetLength(0); i++)
+                    sum += (double)valuesArray[i, j];
+                averageArray[j] = double.Round((sum / (double)valuesArray.GetLength(0)), 1);
+            }
+
+            Console.Write("Средне арифметическое столбцов массива:");
+            PrintObjects.PrintArray<double>(averageArray);
         }
     }
 }

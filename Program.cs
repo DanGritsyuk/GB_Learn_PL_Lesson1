@@ -42,10 +42,16 @@ while (!done)
             methodStart.Invoke(objExercise, null);
 
         }
-        catch
+        catch (Exception ex)
         {
+            //Console.WriteLine("ЗАДАЧА ЕЩЕ НЕ РЕАЛИЗОВАНА");
+#if DEBUG
+            Console.WriteLine(ex);
+#else
             Console.WriteLine("ЗАДАЧА ЕЩЕ НЕ РЕАЛИЗОВАНА");
+#endif
             Console.ReadKey();
+
             continue;
         }
     else
