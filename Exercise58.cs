@@ -32,7 +32,8 @@ namespace Lessons
             PrintObjects.PrintArray(matrixC);
         }
 
-        private static int RowsCount(int[,] matrix) => matrix.GetUpperBound(0) + 1;
-        private static int ColumnsCount(int[,] matrix) => matrix.GetUpperBound(1) + 1;
+        // эти методы для того чтобы не запутаться :)
+        private static int RowsCount(int[,] matrix) => matrix.GetLength(0); // получаем количество строк
+        private static int ColumnsCount(int[,] matrix) => matrix.GetLength(1); // получаем количество столбцов
     }
 }

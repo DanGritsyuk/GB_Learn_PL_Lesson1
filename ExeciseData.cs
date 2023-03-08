@@ -18,7 +18,7 @@ namespace Lessons
         private Dictionary<int, string> _dataList;
         private int _maxIndex;
         private int _length;
-        private const string fileName = "Data/ExercisesOption.xml";
+        private const string FileName = "Data/ExercisesOption.xml";
         public Dictionary<int, string> DataList
         {
             get { return _dataList; }
@@ -94,7 +94,7 @@ namespace Lessons
 
             try
             {
-                var fileInfo = saveLoad.DeSerializeObject<List<string[]>>(fileName);
+                var fileInfo = saveLoad.DeSerializeObject<List<string[]>>(FileName);
 
                 dataFromFile = fileInfo.ToDictionary(item => int.Parse(item[0]), item => item[1]);
             }
@@ -123,6 +123,7 @@ namespace Lessons
                 dataFromFile.Add(52, "Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.");
                 dataFromFile.Add(54, "Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.");
                 dataFromFile.Add(56, "Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.");
+                dataFromFile.Add(57, "Составить частотный словарь элементов двумерного массива. Частотный словарь содержит информацию о том, сколько раз встречается элемент входных данных.");
                 dataFromFile.Add(58, "Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.");
                 dataFromFile.Add(60, "Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.");
                 dataFromFile.Add(62, "Напишите программу, которая заполнит спирально массив 4 на 4.");
@@ -141,7 +142,7 @@ namespace Lessons
             foreach (var taskData in tasksData)
                 fileInfo.Add(new string[] { taskData.Key.ToString(), taskData.Value.ToString() });
 
-            saveLoad.SerializeObject(fileInfo, fileName);
+            saveLoad.SerializeObject(fileInfo, FileName);
         }
 
         private void SetParameters()

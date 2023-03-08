@@ -21,10 +21,10 @@ namespace Lessons
                     break;
                 Console.WriteLine("массив слишком велик, нельзя записать неповторяющиеся двухзначные числа.");
             }
-            PrintArray(CreateArray(n, m, h));
+            PrintArray(FillArray(n, m, h));
         }
 
-        private int[,,] CreateArray(int n, int m, int h)
+        private int[,,] FillArray(int n, int m, int h)
         {
             int[,,] array = new int[n, m, h];
 

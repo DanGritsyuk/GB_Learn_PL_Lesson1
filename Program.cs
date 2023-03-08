@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Lessons;
+﻿using Lessons;
 
 int key = 0;
 bool staredtWithTask = false;
@@ -15,13 +14,13 @@ bool done = false;
 while (!done)
 {
     var execisesData = new ExeciseData();
-    KeyValuePair<int, string> execiseData;
+    KeyValuePair<int, string> exerciseData;
 
     if (staredtWithTask)
     {
-        execiseData = execisesData.DataList.Where(item => item.Key == key).FirstOrDefault();
+        exerciseData = execisesData.DataList.Where(item => item.Key == key).FirstOrDefault();
         staredtWithTask = false;
-        if (execiseData.Key == 0) continue;
+        if (exerciseData.Key == 0) continue;
     }
     else
     {
@@ -29,36 +28,25 @@ while (!done)
         Console.WriteLine("ДОМАШНЕЕ ЗАДАНИЕ");
         Console.WriteLine("");
 
-        execiseData = StartMenu.GetMenu(execisesData, true);
+        exerciseData = StartMenu.GetMenu(execisesData, true);
     }
 
-    if (execiseData.Key != 0)
-        try
-        {
-            Type exerciseType = Type.GetType($"Lessons.Exercise{execiseData.Key}")!;
-            MethodInfo methodStart = exerciseType.GetMethod("Start", BindingFlags.Public | BindingFlags.Instance)!;
-            ConstructorInfo exerciseConstructor = exerciseType.GetConstructor(new Type[] { typeof(KeyValuePair<int, string>) })!;
-            object objExercise = exerciseConstructor.Invoke(new object[] { execiseData });
-            methodStart.Invoke(objExercise, null);
-
-        }
-        catch (Exception ex)
-        {
-#if DEBUG
-            Console.WriteLine(ex);
-#else
-            Console.WriteLine("ЗАДАЧА ЕЩЕ НЕ РЕАЛИЗОВАНА");
-#endif
-            Console.ReadKey();
-
-            continue;
-        }
-    else
+    if (exerciseData.Key == 0)
     {
         done = true;
-        Console.Clear();
         continue;
     }
-}
 
+    try
+    {
+        Exercise exercise = ExerciseBuilder.GetExerciseObject(exerciseData);
+        exercise.Start();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+        Console.ReadKey();
+    }
+}
+Console.Clear();
 Console.WriteLine($"Программа закрыта.");

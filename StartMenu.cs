@@ -7,7 +7,7 @@ namespace Lessons
         public static KeyValuePair<int, string> GetMenu(ExeciseData menuItems, bool showHelpControl = false)
         {
             int taskKey = 0;
-            string taskText = "";
+            string taskText = String.Empty;
 
             Tuple<int[], string[]> dataForPrintMenu = menuItems.GetTextForConsole();
 
