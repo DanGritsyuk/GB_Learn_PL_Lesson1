@@ -33,6 +33,9 @@ namespace Lessons
                 case 58: return new Exercise58(exerciseData);
                 case 60: return new Exercise60(exerciseData);
                 case 62: return new Exercise62(exerciseData);
+                case 64: return new Exercise64(exerciseData);
+                case 66: return new Exercise66(exerciseData);
+                case 68: return new Exercise68(exerciseData);
                 default:
                     throw new Exception("ЗАДАЧА ЕЩЕ НЕ РЕАЛИЗОВАНА");
             }

@@ -17,8 +17,7 @@ namespace Lessons
 
             while (argument <= n * n)
             {
-                array[i, j] = argument;
-                argument++;
+                array[i, j] = argument++;
                 if (i <= j + 1 && i + j < n - 1)
                     j++;
                 else if (i < j && i + j >= n - 1)
