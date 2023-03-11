@@ -7,7 +7,7 @@ namespace Lessons
         public Exercise64(KeyValuePair<int, string> taskData) : base(taskData) { }
         public override void Body()
         {
-            Console.Write("Введите первое число (n): ");
+            Console.Write("Введите первое число (N): ");
             int n = InputNumbers.GetNumberFromConsole(1, int.MaxValue, "Введено некоректное число. Введите другое: ");
             Console.WriteLine($"N={n} -> \"{СountdowRec(n)}");
         }
