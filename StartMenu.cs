@@ -22,7 +22,7 @@ namespace Lessons
             return new KeyValuePair<int, string>(taskKey, taskText);
         }
 
-        public static int GetMenu(string[] menuLines, bool showHelpControl = false)
+        public static int GetMenu(string[] menuLines, bool showHelpControl = false, bool isEscActive = true)
         {
 
             int row = Console.CursorTop;
@@ -45,7 +45,10 @@ namespace Lessons
                     case ConsoleKey.Enter:
                         return index + 1;
                     case ConsoleKey.Escape:
-                        return 0;
+                        if (isEscActive)
+                            return 0;
+                        else
+                            break;
                 }
             }
         }
