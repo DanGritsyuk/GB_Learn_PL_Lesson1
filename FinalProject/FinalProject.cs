@@ -8,7 +8,35 @@ namespace Lessons
 
         public override void Body()
         {
-            throw new NotImplementedException();
+            Console.Write("Введите строку: ");
+            var strArray = InputNumbers.GetArrayFromConsole<string>();
+            PrintObjects.PrintArray<string>(GetThreeCharStringArray(strArray));
+        }
+        private string[] GetThreeCharStringArray(string[] sourceArray)
+        {
+            string[] newArray = new string[GetThreeCharStringCount(sourceArray)];
+
+            int index = 0, maxLength = 3;
+
+            for (int i = 0; i < sourceArray.Length; i++)
+                if (sourceArray[i].Length <= maxLength)
+                {
+                    newArray[index] = sourceArray[i];
+                    index++;
+                }
+
+            return newArray;
+        }
+        private int GetThreeCharStringCount(string[] array)
+        {
+            int count = 0, maxLength = 3;
+
+            for (int i = 0; i < array.Length; i++)
+                if (array[i].Length <= maxLength)
+                {
+                    count++;
+                }
+            return count;
         }
     }
 }
