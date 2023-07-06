@@ -5,23 +5,26 @@ namespace Lessons
     public class Exercise60 : Exercise
     {
         public Exercise60(KeyValuePair<int, string> taskData) : base(taskData) { }
-        public override void Body()
+        public override bool Solution()
         {
+            const string ERROR_MESSAGE = "Введено некорректное число.";
             int n, m, h;
             while (true)
             {
                 Console.Write("Введите первый размер (i): ");
-                n = Lessons.InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
+                n = Lessons.InputNumbers.GetObjectFromConsole<int>(ERROR_MESSAGE);
                 Console.Write("Введите второй размер (j): ");
-                m = Lessons.InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
+                m = Lessons.InputNumbers.GetObjectFromConsole<int>(ERROR_MESSAGE);
                 Console.Write("Введите третий размер (h): ");
-                h = Lessons.InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
+                h = Lessons.InputNumbers.GetObjectFromConsole<int>(ERROR_MESSAGE);
 
                 if (n * m * h < 100)
                     break;
                 Console.WriteLine("массив слишком велик, нельзя записать неповторяющиеся двухзначные числа.");
             }
             PrintArray(FillArray(n, m, h));
+
+            return false;
         }
 
         private int[,,] FillArray(int n, int m, int h)

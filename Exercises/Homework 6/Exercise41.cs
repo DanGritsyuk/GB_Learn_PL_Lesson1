@@ -6,7 +6,7 @@ namespace Lessons
     {
         public Exercise41(KeyValuePair<int, string> taskData) : base(taskData) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             int countPos = 0;
             string errorMessage = "Некорректное число. Повторите попытку:";
@@ -20,6 +20,8 @@ namespace Lessons
             }
             Console.WriteLine();
             Console.WriteLine($"Было введено {countPos} чисел, которые больше 0");
+
+            return false;
         }
     }
 }

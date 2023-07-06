@@ -7,7 +7,7 @@ namespace Lessons
         public Exercise34(int taskNum, string description) : base(taskNum, description) { }
         public Exercise34(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите длину массива: ");
             var array = new int[InputNumbers.GetNumberFromConsole(1, int.MaxValue, "Некорректное число. Повторите попытку:")];
@@ -23,6 +23,7 @@ namespace Lessons
             Console.Write("] -> ");
             if (evenCount == 0) Console.Write("Нет четных чисел");
             else Console.WriteLine($"четных чисел: {evenCount}");
+            return false;
         }
     }
 }

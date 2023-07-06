@@ -6,32 +6,33 @@ namespace Lessons
     {
         public Exercise43(KeyValuePair<int, string> taskData) : base(taskData) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             var line1 = new GeometryLine("1");
             var line2 = new GeometryLine("2");
 
-            if (line1.Coefficient == line2.Coefficient)
+            if (Math.Abs(line1.Coefficient - line2.Coefficient) < double.Epsilon)
             {
-                if (line1.Constant == line2.Constant)
+                if (Math.Abs(line1.Constant - line2.Constant) < double.Epsilon)
                     Console.WriteLine("Прямые совпадают.");
                 else
                     Console.WriteLine("Прямые параллельные.");
-                return;
+                return false;
             }
 
             var intersectionPoint = new Point(line1, line2);
             Console.WriteLine($"Точка пересечения имеет координаты {intersectionPoint.ToString()}");
+            return false;
         }
 
         public struct GeometryLine
         {
             public GeometryLine(string name)
             {
-                string errorMessage = "Некоректное значение";
+                string errorMessage = "Некорректное значение";
 
                 this.Name = name;
-                Console.WriteLine($"Введите коэфицент для прямой {name}");
+                Console.WriteLine($"Введите коэффициент для прямой {name}");
                 this.Coefficient = InputNumbers.GetObjectFromConsole<double>(errorMessage);
                 Console.WriteLine($"Введите константу для прямой {name}");
                 this.Constant = InputNumbers.GetObjectFromConsole<double>(errorMessage);

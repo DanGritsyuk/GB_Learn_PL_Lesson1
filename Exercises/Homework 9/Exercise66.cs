@@ -5,7 +5,7 @@ namespace Lessons
     public class Exercise66 : Exercise
     {
         public Exercise66(KeyValuePair<int, string> taskData) : base(taskData) { }
-        public override void Body()
+        public override bool Solution()
         {
             string errorMessage = "Введено некоректное число. Введите другое: ";
             Console.Write("Введите первое число (N): ");
@@ -14,6 +14,7 @@ namespace Lessons
             int m = InputNumbers.GetObjectFromConsole<int>(errorMessage);
 
             Console.WriteLine(SumRec(n, m));
+            return false;
         }
 
         private int SumRec(int n, int m) => n >= m ? m : n + m + SumRec(n + 1, m - 1);

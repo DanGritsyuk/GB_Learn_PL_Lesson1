@@ -6,7 +6,7 @@ namespace Lessons
     {
         public Exercise29(int taskNum, string description) : base(taskNum, description) { }
         public Exercise29(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите длину массива: ");
             int lengthArray = InputNumbers.GetNumberFromConsole(0, 20, "Некорректное число или слишком большая длина. Повторите попытку:");
@@ -14,6 +14,8 @@ namespace Lessons
 
             PrintArray(array);
             Console.WriteLine();
+
+            return false;
         }
 
         private int[] GetArrayFromConsole(int length)
@@ -22,7 +24,7 @@ namespace Lessons
             for (int i = 0; i < length; i++)
             {
                 Console.Write($"Введите {i} значение: ");
-                array[i] = InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
+                array[i] = InputNumbers.GetObjectFromConsole<int>("Введено некорректное число.");
             }
 
             return array;
@@ -33,8 +35,8 @@ namespace Lessons
             Console.Write("Массив: [ ");
             foreach (var item in array)
             {
-                if (item != null)
-                    Console.Write($" {item.ToString()} ");
+                if (object.Equals(item, default(T)))
+                    Console.Write($" {item} ");
             }
             Console.Write(" ]");
         }

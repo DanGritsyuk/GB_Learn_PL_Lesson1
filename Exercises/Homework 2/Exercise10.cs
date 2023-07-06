@@ -7,12 +7,14 @@ namespace Lessons
         public Exercise10(int taskNum, string description) : base(taskNum, description) { }
         public Exercise10(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите число (n): ");
             int n = InputNumbers.GetNumberFromConsole(100, 999, "Введено не трехзначное число. Введите корректное: ");
 
             Console.WriteLine($"Вторая цифра числа {n} это {n / 10 % 10}");
+
+            return false;
         }
     }
 }

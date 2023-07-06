@@ -3,9 +3,9 @@ using System.Xml.Serialization;
 
 namespace Lessons
 {
-    internal class SaveLoadFile
+    internal class SaveLoadFile<T> where T : class
     {
-        public void SerializeObject<T>(T serializableObject, string filePath)
+        public void SerializeObject(T serializableObject, string filePath)
         {
             if (serializableObject == null || filePath == null) { throw new ArgumentException(); }
 
@@ -24,7 +24,7 @@ namespace Lessons
             catch { }
         }
 
-        public T DeSerializeObject<T>(string filePath)
+        public T DeSerializeObject(string filePath)
         {
             if (string.IsNullOrEmpty(filePath)) { return default(T)!; }
 

@@ -5,19 +5,19 @@ namespace Lessons
     public class Exercise68 : Exercise
     {
         public Exercise68(KeyValuePair<int, string> taskData) : base(taskData) { }
-        delegate int Solution(int n, int m);
+        delegate int SolutionType(int n, int m);
 
-        public override void Body()
+        public override bool Solution()
         {
-            string errorMessage = "Введено некоректное число. Введите другое: ";
+            string errorMessage = "Введено некорректное число. Введите другое: ";
             Console.Write("Введите первое число (N): ");
             int n = InputNumbers.GetObjectFromConsole<int>(errorMessage);
             Console.Write("Введите первое число (M): ");
             int m = InputNumbers.GetObjectFromConsole<int>(errorMessage);
 
-            Solution ackermann = CheckSolution();
-            Console.WriteLine($"m = {m}, n = {n} -> A(m,n) = {ackermann(n, m)}");
-
+            SolutionType checkedAckermann = CheckSolution();
+            Console.WriteLine($"m = {m}, n = {n} -> A(m,n) = {checkedAckermann(n, m)}");
+            return false;
         }
 
         private int AckermannRec(int n, int m)
@@ -40,7 +40,7 @@ namespace Lessons
             return m + 1;
         }
 
-        private Solution CheckSolution()
+        private SolutionType CheckSolution()
         {
             Console.WriteLine();
             Console.WriteLine("Выберите способ вычисления:");

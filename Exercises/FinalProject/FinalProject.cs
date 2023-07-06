@@ -6,12 +6,14 @@ namespace Lessons
     {
         public FinalProject(KeyValuePair<int, string> taskData) : base(taskData) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите строку: ");
             var strArray = InputNumbers.GetArrayFromConsole<string>();
             PrintObjects.PrintArray<string>(GetThreeCharStringArray(strArray));
+            return false;
         }
+
         private string[] GetThreeCharStringArray(string[] sourceArray)
         {
             string[] newArray = new string[GetThreeCharStringCount(sourceArray)];
@@ -27,6 +29,7 @@ namespace Lessons
 
             return newArray;
         }
+
         private int GetThreeCharStringCount(string[] array)
         {
             int count = 0, maxLength = 3;

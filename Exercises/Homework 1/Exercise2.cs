@@ -6,9 +6,9 @@ namespace Lessons
     {
         public Exercise2(int taskNum, string description) : base(taskNum, description) { }
         public Exercise2(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
-        public override void Body()
+        public override bool Solution()
         {
-            string errorMessage = "Введено некоректное число.";
+            string errorMessage = "Введено некорректное число.";
 
             Console.Write("Введите первое число (a): ");
             int a = Lessons.InputNumbers.GetObjectFromConsole<int>(errorMessage);
@@ -16,6 +16,8 @@ namespace Lessons
             int b = Lessons.InputNumbers.GetObjectFromConsole<int>(errorMessage);
 
             Console.WriteLine($"a = {a}; b = {b} -> max = {(a > b ? a : b)}");
+
+            return false;
         }
     }
 }

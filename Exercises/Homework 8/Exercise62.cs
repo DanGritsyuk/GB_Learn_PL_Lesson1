@@ -5,7 +5,7 @@ namespace Lessons
     public class Exercise62 : Exercise
     {
         public Exercise62(KeyValuePair<int, string> taskData) : base(taskData) { }
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите размер массива (не менее 4): ");
             int n = InputNumbers.GetNumberFromConsole(4, int.MaxValue, "Некорректное число. Повторите попытку:");
@@ -29,6 +29,8 @@ namespace Lessons
             }
 
             PrintObjects.PrintArray<int>(array);
+
+            return false;
         }
     }
 }

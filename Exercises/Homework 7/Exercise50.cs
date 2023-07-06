@@ -6,14 +6,14 @@ namespace Lessons
     {
         public Exercise50(KeyValuePair<int, string> taskData) : base(taskData) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.WriteLine("Введите первый индекс: ");
             int i = InputNumbers.GetNumberFromConsole(1, int.MaxValue, "Некорректное число. Повторите попытку:");
             Console.WriteLine("Введите второй индекс: ");
             int j = InputNumbers.GetNumberFromConsole(1, int.MaxValue, "Некорректное число. Повторите попытку:");
 
-            int[,] array = GeneradeArray((new Random()).Next(1, 11), (new Random()).Next(1, 11));
+            int[,] array = GenerateArray((new Random()).Next(1, 11), (new Random()).Next(1, 11));
 
             try { Console.WriteLine($"Значение: {array[i, j]}"); }
             catch { Console.WriteLine($"Такого элемента нет"); }
@@ -21,9 +21,11 @@ namespace Lessons
             Console.WriteLine();
             Console.WriteLine($"Текущий массив:");
             PrintObjects.PrintArray(array);
+
+            return false;
         }
 
-        private int[,] GeneradeArray(int col, int row)
+        private int[,] GenerateArray(int col, int row)
         {
             var array = new int[row, col];
 

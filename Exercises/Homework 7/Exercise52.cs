@@ -7,7 +7,7 @@ namespace Lessons
     {
         public Exercise52(KeyValuePair<int, string> taskData) : base(taskData) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             int[,] valuesArray = InputNumbers.GetTwoDimensionalArrayFromConsole<int>();
             double[] averageArray = new double[valuesArray.GetLength(1)];
@@ -17,11 +17,13 @@ namespace Lessons
                 double sum = 0;
                 for (int i = 0; i < valuesArray.GetLength(0); i++)
                     sum += (double)valuesArray[i, j];
-                averageArray[j] = double.Round((sum / (double)valuesArray.GetLength(0)), 1);
+                averageArray[j] = Math.Round((sum / (double)valuesArray.GetLength(0)), 1);
             }
 
             Console.Write("Средне арифметическое столбцов массива: ");
             PrintObjects.PrintArray<double>(averageArray);
+
+            return false;
         }
     }
 }

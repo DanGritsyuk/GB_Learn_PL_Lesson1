@@ -7,12 +7,13 @@ namespace Lessons
         public Exercise6(int taskNum, string description) : base(taskNum, description) { }
         public Exercise6(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите число (a): ");
-            int a = Lessons.InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
+            int a = InputNumbers.GetObjectFromConsole<int>("Введено некорректное число.");
 
             Console.WriteLine($"{a} - {(a % 2 == 0 ? "четное" : "нечетное")}");
+            return false;
         }
     }
 }

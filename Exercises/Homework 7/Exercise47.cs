@@ -6,7 +6,7 @@ namespace Lessons
     {
         public Exercise47(KeyValuePair<int, string> taskData) : base(taskData) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.WriteLine("Введите длину массива: ");
             int col = InputNumbers.GetNumberFromConsole(1, int.MaxValue, "Некорректное число. Повторите попытку:");
@@ -19,6 +19,8 @@ namespace Lessons
                     array[i, j] = (new Random()).Next(-100, 100);
 
             PrintObjects.PrintArray(array);
+
+            return false;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Lessons
         public Exercise21(int taskNum, string description) : base(taskNum, description) { }
         public Exercise21(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.WriteLine("Первая точка в пространстве. ");
             var point1In3D = new Point3D();
@@ -14,12 +14,14 @@ namespace Lessons
             var point2In3D = new Point3D();
 
             Console.WriteLine();
-            Console.WriteLine($"Расстояние между A{point1In3D.ToString()} и B{point2In3D.ToString()} равно {double.Round(Point3D.GetDistance(point1In3D, point2In3D), 2)}");
+            Console.WriteLine($"Расстояние между A{point1In3D.ToString()} и B{point2In3D.ToString()} равно {Math.Round(Point3D.GetDistance(point1In3D, point2In3D), 2)}");
+
+            return false;
         }
 
         struct Point3D
         {
-            string errorMessage = "Введено некоректное число.";
+            string errorMessage = "Введено некорректное число.";
             public Point3D()
             {
                 Console.WriteLine("Введите координаты: ");

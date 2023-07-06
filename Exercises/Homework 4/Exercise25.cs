@@ -6,14 +6,16 @@ namespace Lessons
         public Exercise25(int taskNum, string description) : base(taskNum, description) { }
         public Exercise25(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите число A: ");
-            int a = InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
+            int a = InputNumbers.GetObjectFromConsole<int>("Введено некорректное число.");
             Console.Write("Введите число B: ");
             int b = InputNumbers.GetNumberFromConsole(0, int.MaxValue, "Число должно быть натуральным. Повторите попытку:");
 
             Console.WriteLine($"{a} в степени {b} равно {Exponentiation(a, b)}");
+
+            return false;
         }
 
         private int Exponentiation(int numberA, int numberB)

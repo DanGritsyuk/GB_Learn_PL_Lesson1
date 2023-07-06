@@ -9,7 +9,7 @@ namespace Lessons
     {
         public Exercise57(KeyValuePair<int, string> taskData) : base(taskData) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             int defaultElement = 0;
             int[,] array = InputNumbers.GetTwoDimensionalArrayFromConsole<int>();
@@ -21,6 +21,7 @@ namespace Lessons
                 for (int j = 0; j < array.GetLength(1); j++)
                     if (array[i, j] != 0)
                         PrintCountArrayElement(array[i, j], GetCountArrayElement(array[i, j], array));
+            return false;
         }
 
         private int GetCountArrayElement(int item, int[,] array)

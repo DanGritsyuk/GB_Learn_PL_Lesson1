@@ -8,7 +8,7 @@ namespace Lessons
 
         public Exercise36(int taskNum, string description) : base(taskNum, description) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите длину массива: ");
             var array = new int[InputNumbers.GetNumberFromConsole(1, int.MaxValue, "Некорректное число. Повторите попытку:")];
@@ -22,6 +22,8 @@ namespace Lessons
                 Console.Write($" {array[i]} ");
             }
             Console.WriteLine($"] равна: {oddIndexValuesSum}");
+
+            return false;
         }
     }
 

@@ -7,12 +7,12 @@ namespace Lessons
     public class Exercise38 : Exercise
     {
         public Exercise38(KeyValuePair<int, string> taskData) : base(taskData) { }
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите длину массива: ");
             var array = new float[InputNumbers.GetNumberFromConsole(1, int.MaxValue, "Некорректное число. Повторите попытку:")];
             float min, max;
-            var errorMessage = "Введено некоректное число.";
+            var errorMessage = "Введено некорректное число.";
 
             Console.Write("Введите 0 элемент: ");
             array[0] = min = max = InputNumbers.GetObjectFromConsole<float>(errorMessage);
@@ -27,6 +27,8 @@ namespace Lessons
                 answerToConsole.Append($" {array[i]} ");
             }
             Console.WriteLine($"{answerToConsole.ToString()} ] равна: {max - min}");
+
+            return false;
         }
     }
 }

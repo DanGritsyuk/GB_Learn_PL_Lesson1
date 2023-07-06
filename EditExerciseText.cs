@@ -16,7 +16,7 @@ namespace Lessons
             bool doneEdit = false;
             while (!doneEdit)
             {
-                var execiseData = new ExeciseData();
+                var execiseData = new ExerciseData();
 
                 Console.Clear();
                 Console.WriteLine(execiseData.ToString());
@@ -32,7 +32,7 @@ namespace Lessons
                 }
             }
         }
-        private static void AddNewExercise(ExeciseData execiseData)
+        private static void AddNewExercise(ExerciseData execiseData)
         {
             if (execiseData == null) throw new ArgumentException();
 
@@ -47,7 +47,7 @@ namespace Lessons
             }
         }
 
-        private static void EditExercise(ExeciseData execiseData)
+        private static void EditExercise(ExerciseData execiseData)
         {
             if (execiseData == null) throw new ArgumentException();
 
@@ -62,7 +62,7 @@ namespace Lessons
             }
         }
 
-        private static void DeleteExercise(ExeciseData execiseData)
+        private static void DeleteExercise(ExerciseData execiseData)
         {
             if (execiseData == null) throw new ArgumentException();
 

@@ -6,12 +6,14 @@ namespace Lessons
     {
         public Exercise27(int taskNum, string description) : base(taskNum, description) { }
         public Exercise27(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите число: ");
-            int n = InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
+            int n = InputNumbers.GetObjectFromConsole<int>("Введено некорректное число.");
 
             Console.WriteLine($"Сумма цифр числа {n} равна {GetSumDigits(n)}");
+
+            return false;
         }
 
         private int GetSumDigits(int num)

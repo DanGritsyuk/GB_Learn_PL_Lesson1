@@ -5,7 +5,7 @@ namespace Lessons
     public class Exercise58 : Exercise
     {
         public Exercise58(KeyValuePair<int, string> taskData) : base(taskData) { }
-        public override void Body()
+        public override bool Solution()
         {
             int[,] matrixA = InputNumbers.GetTwoDimensionalArrayFromConsole<int>();
             Console.WriteLine();
@@ -14,7 +14,7 @@ namespace Lessons
             if (ColumnsCount(matrixA) != RowsCount(matrixB))
             {
                 Console.WriteLine("Умножение не возможно! Количество столбцов первой матрицы не равно количеству строк второй матрицы.");
-                return;
+                return false;
             }
 
             var matrixC = new int[RowsCount(matrixA), ColumnsCount(matrixB)];
@@ -30,6 +30,8 @@ namespace Lessons
             }
 
             PrintObjects.PrintArray(matrixC);
+
+            return false;
         }
 
         // эти методы для того чтобы не запутаться :)

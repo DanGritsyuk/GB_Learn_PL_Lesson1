@@ -4,7 +4,7 @@ namespace Lessons
 {
     public static class StartMenu
     {
-        public static KeyValuePair<int, string> GetMenu(ExeciseData menuItems, bool showHelpControl = false)
+        public static KeyValuePair<int, string> GetMenu(ExerciseData menuItems, bool showHelpControl = false)
         {
             int taskKey = 0;
             string taskText = String.Empty;

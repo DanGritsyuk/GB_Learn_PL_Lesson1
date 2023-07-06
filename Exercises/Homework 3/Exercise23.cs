@@ -7,10 +7,10 @@ namespace Lessons
         public Exercise23(int taskNum, string description) : base(taskNum, description) { }
         public Exercise23(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите число (n): ");
-            int n = Lessons.InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
+            int n = Lessons.InputNumbers.GetObjectFromConsole<int>("Введено некорректное число.");
 
             if (n < 1)
                 Console.Write($"{n} -> чисел нет");
@@ -21,6 +21,8 @@ namespace Lessons
                 Console.Write($", {i * i * i}");
             }
             Console.WriteLine();
+
+            return false;
         }
     }
 }

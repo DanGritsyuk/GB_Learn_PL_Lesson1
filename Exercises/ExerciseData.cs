@@ -2,14 +2,14 @@ using System.Text;
 
 namespace Lessons
 {
-    public class ExeciseData
+    public class ExerciseData
     {
-        public ExeciseData()
+        public ExerciseData()
         {
             _dataList = LoadExerciseOptions();
             SetParameters();
         }
-        public ExeciseData(Dictionary<int, string> data)
+        public ExerciseData(Dictionary<int, string> data)
         {
             _dataList = data;
             SetParameters();
@@ -71,7 +71,7 @@ namespace Lessons
             return new Tuple<int[], string[]>(tasksArrayKeys, tasksArrayValues);
         }
 
-        public void SaveToFile() => SaveToXMLfile(this.DataList, new SaveLoadFile());
+        public void SaveToFile() => SaveToXmlFile(this.DataList, new SaveLoadFile<List<string[]>>());
 
         public override string ToString()
         {
@@ -89,12 +89,12 @@ namespace Lessons
 
         private static Dictionary<int, string> LoadExerciseOptions()
         {
-            var saveLoad = new SaveLoadFile();
+            var saveLoad = new SaveLoadFile<List<string[]>>();
             var dataFromFile = new Dictionary<int, string>();
 
             try
             {
-                var fileInfo = saveLoad.DeSerializeObject<List<string[]>>(FileName);
+                var fileInfo = saveLoad.DeSerializeObject(FileName);
 
                 dataFromFile = fileInfo.ToDictionary(item => int.Parse(item[0]), item => item[1]);
             }
@@ -135,11 +135,11 @@ namespace Lessons
                 if (!Directory.Exists("Data"))
                     Directory.CreateDirectory("Data");
 
-                SaveToXMLfile(dataFromFile, saveLoad);
+                SaveToXmlFile(dataFromFile, saveLoad);
             }
             return dataFromFile;
         }
-        private static void SaveToXMLfile(Dictionary<int, string> tasksData, SaveLoadFile saveLoad)
+        private static void SaveToXmlFile(Dictionary<int, string> tasksData, SaveLoadFile<List<string[]>> saveLoad)
         {
             var fileInfo = new List<string[]>();
 

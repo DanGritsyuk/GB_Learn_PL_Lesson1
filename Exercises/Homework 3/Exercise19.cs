@@ -7,7 +7,7 @@ namespace Lessons
         public Exercise19(int taskNum, string description) : base(taskNum, description) { }
         public Exercise19(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите пятизначное число: ");
             int copyNumber, number = copyNumber = InputNumbers.GetNumberFromConsole(10000, 99999, "Введено не пятизначное число. Повторите попытку: ");
@@ -20,6 +20,8 @@ namespace Lessons
             }
 
             Console.WriteLine($"Число {number} {(number == reverceNumber ? "палиндром" : "не палиндром")}");
+
+            return false;
         }
     }
 }

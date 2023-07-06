@@ -5,7 +5,7 @@ namespace Lessons
     public class Exercise56 : Exercise
     {
         public Exercise56(KeyValuePair<int, string> taskData) : base(taskData) { }
-        public override void Body()
+        public override bool Solution()
         {
             int[,] array = InputNumbers.GetTwoDimensionalArrayFromConsole<int>();
 
@@ -28,6 +28,7 @@ namespace Lessons
             }
 
             Console.WriteLine($"{lineIndex + 1}-я строка с наименьшей суммой элементов.");
+            return false;
         }
     }
 }

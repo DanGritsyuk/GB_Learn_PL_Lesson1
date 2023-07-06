@@ -5,7 +5,7 @@ namespace Lessons
     public class Exercise54 : Exercise
     {
         public Exercise54(KeyValuePair<int, string> taskData) : base(taskData) { }
-        public override void Body()
+        public override bool Solution()
         {
             int[,] array = InputNumbers.GetTwoDimensionalArrayFromConsole<int>();
 
@@ -22,6 +22,7 @@ namespace Lessons
             }
 
             PrintObjects.PrintArray<int>(array);
+            return false;
         }
     }
 }

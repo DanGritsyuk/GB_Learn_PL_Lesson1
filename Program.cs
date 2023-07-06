@@ -1,25 +1,25 @@
 ﻿using Lessons;
 
 int key = 0;
-bool staredtWithTask = false;
+bool staredWithTask = false;
 if (args.Length > 0)
 {
     if (args[0].ToLower() == "edit")
         EditExerciseText.TryStratGetEditor();
     else
-        staredtWithTask = int.TryParse(args[0], out key);
+        staredWithTask = int.TryParse(args[0], out key);
 }
 
 bool done = false;
 while (!done)
 {
-    var execisesData = new ExeciseData();
+    var exercisesData = new ExerciseData();
     KeyValuePair<int, string> exerciseData;
 
-    if (staredtWithTask)
+    if (staredWithTask)
     {
-        exerciseData = execisesData.DataList.Where(item => item.Key == key).FirstOrDefault();
-        staredtWithTask = false;
+        exerciseData = exercisesData.DataList.Where(item => item.Key == key).FirstOrDefault();
+        staredWithTask = false;
         if (exerciseData.Key == 0) continue;
     }
     else
@@ -28,7 +28,7 @@ while (!done)
         Console.WriteLine("ДОМАШНЕЕ ЗАДАНИЕ");
         Console.WriteLine("");
 
-        exerciseData = StartMenu.GetMenu(execisesData, true);
+        exerciseData = StartMenu.GetMenu(exercisesData, true);
     }
 
     if (exerciseData.Key == 0)

@@ -7,10 +7,10 @@ namespace Lessons
         public Exercise13(int taskNum, string description) : base(taskNum, description) { }
         public Exercise13(KeyValuePair<int, string> taskData) : base(taskData.Key, taskData.Value) { }
 
-        public override void Body()
+        public override bool Solution()
         {
             Console.Write("Введите число (n): ");
-            int n = InputNumbers.GetObjectFromConsole<int>("Введено некоректное число.");
+            int n = InputNumbers.GetObjectFromConsole<int>("Введено некорректное число.");
 
             Console.Write($"{n} -> ");
             if (n > 99)
@@ -22,6 +22,8 @@ namespace Lessons
             }
             else
                 Console.WriteLine($"Третьей цифры нет");
+
+            return false;
         }
     }
 }
