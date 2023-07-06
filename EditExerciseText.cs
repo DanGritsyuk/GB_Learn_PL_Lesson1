@@ -16,34 +16,34 @@ namespace Lessons
             bool doneEdit = false;
             while (!doneEdit)
             {
-                var execiseData = new ExerciseData();
+                var exerciseData = new ExerciseData();
 
                 Console.Clear();
-                Console.WriteLine(execiseData.ToString());
+                Console.WriteLine(exerciseData.ToString());
                 Console.WriteLine();
                 var selectedEditMenuItem = StartMenu.GetMenu(menuItems, true);
 
                 switch (selectedEditMenuItem)
                 {
                     case 0: doneEdit = true; break;
-                    case 1: AddNewExercise(execiseData); break;
-                    case 2: EditExercise(execiseData); break;
-                    case 3: DeleteExercise(execiseData); break;
+                    case 1: AddNewExercise(exerciseData); break;
+                    case 2: EditExercise(exerciseData); break;
+                    case 3: DeleteExercise(exerciseData); break;
                 }
             }
         }
-        private static void AddNewExercise(ExerciseData execiseData)
+        private static void AddNewExercise(ExerciseData exerciseData)
         {
-            if (execiseData == null) throw new ArgumentException();
+            if (exerciseData == null) throw new ArgumentException();
 
             string exerciseText = "";
             int exerciseNumber = 0;
 
-            exerciseNumber = WriteEditingMenu(out exerciseText, execiseData.DataList.Keys.ToArray(), false, "Такая задача уже существует. Введите другой номер:");
+            exerciseNumber = WriteEditingMenu(out exerciseText, exerciseData.DataList.Keys.ToArray(), false, "Такая задача уже существует. Введите другой номер:");
             if (IsConfirm())
             {
-                execiseData.AddNewExercise(exerciseNumber, exerciseText);
-                execiseData.SaveToFile();
+                exerciseData.AddNewExercise(exerciseNumber, exerciseText);
+                exerciseData.SaveToFile();
             }
         }
 
